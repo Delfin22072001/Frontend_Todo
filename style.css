@@ -1,0 +1,123 @@
+:root {
+  --background: #121826;
+  --card: #1E293B;
+  --card-hover: #263449;
+  --text: #F8FAFC;
+  --input-bg: #0F172A;
+  --border: #334155;
+  --success: #0c943e;
+  --success-hover:#2ad368;
+  --warning:#e5c008;
+  --danger: #EF4444;
+}
+
+body{
+  background-color:var(--background);
+}
+
+.todo-list{
+  height:100vh;
+}
+
+.todo-form{
+  border:1px solid var(--border);
+  font-family: 'poppins';
+  height:auto;
+  width:380px;
+  padding:30px;
+  color:var(--text);
+  background-color:var(--card);
+  border-radius:20px;
+}
+
+.todo-form:hover{
+  box-shadow: 0px 0px 10px var(--card-hover);
+}
+
+#task, #myNewInput{
+  width:100%;
+  border-radius:5px;
+  border:var(--border); 
+  color:var(--text);
+  background-color: var(--input-bg);
+}
+
+#task{
+  padding:5px 10px;
+}
+
+#error-msg{
+  color:var(--danger);
+  font-size:15px;
+  margin:0px 5px;
+}
+
+#myNewInput{
+  padding:0px 5px;
+  width:250px;
+  height:30px;
+}
+
+#task-button{
+  background-color: var(--success);
+  border:none;
+  padding:8px 15px;
+  border-radius:10px;  
+  color:var(--text)
+}
+
+#task-button:hover{
+  background-color: var(--success-hover);
+  box-shadow: 0px 0px 5px var(--primary);
+}
+
+.icons{
+  position: relative;
+}
+
+.icons i{
+  position: absolute;
+  right:5px;
+  bottom:-5px;
+}
+
+.icons .fa-sun{
+  visibility: hidden;
+}
+
+i:hover{
+  cursor: pointer;
+}
+
+.fa-pen{
+  color:var(--warning);
+}
+
+.fa-trash{
+  color:var(--danger);
+}
+
+.task-items{
+  margin:20px 0px;
+  border-radius:5px;
+}
+
+.task-items ul{
+  margin:0;
+  padding:0;
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+li{
+  display: flex;
+  font-size:18px;
+  margin:15px 0px;
+  padding:5px;
+  border-radius:5px;
+  align-items: center;
+  justify-content:space-between;
+  background-color: var(--input-bg);
+}
+
+
