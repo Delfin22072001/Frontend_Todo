@@ -2,9 +2,8 @@ const taskBtn = document.getElementById('task-button')
 const taskItems = document.querySelector('.task-items')
 const taskValue = document.getElementById('task')
 const errorMsg = document.getElementById('error-msg')
-let tasks=[task]
 
-const ul = document.createElement('ul')     // created once
+const ul = document.createElement('ul') 
 taskItems.append(ul)
 
 taskBtn.addEventListener('click', (e) => {
