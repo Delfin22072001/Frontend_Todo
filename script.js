@@ -28,14 +28,8 @@ addBtn.addEventListener('click', (e)=>{
   taskContainer.appendChild(div)
 
   input.addEventListener('change', () =>{
-    if(input.checked){
-      label.style.textDecoration = "line-through"
-    }
-    else{
-      label.style.textDecoration = "none"
-    }
-  })
-  
+    input.checked? label.style.textDecoration = "line-through" : label.style.textDecoration = "none"
+  }) 
 })
 
 //toggle
