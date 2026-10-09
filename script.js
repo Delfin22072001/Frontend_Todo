@@ -1,54 +1,41 @@
-const taskBtn = document.getElementById('task-button')
-const taskItems = document.querySelector('.task-items')
-const taskValue = document.getElementById('task')
-const errorMsg = document.getElementById('error-msg')
+const addBtn = document.getElementById('task-button')
+const myInput = document.getElementById('task')
+const taskContainer = document.querySelector('.task-items')
 
-const ul = document.createElement('ul') 
-taskItems.append(ul)
-
-taskBtn.addEventListener('click', (e) => {
+addBtn.addEventListener('click', (e)=>{
   e.preventDefault()
-
-  const task = taskValue.value.trim()
-  if (!task) {
-    errorMsg.textContent = "Please enter a task"
+  const taskInput = document.getElementById('task').value 
+  if(!taskInput){
+    alert("Please enter a task")
     return
   }
-  errorMsg.textContent = ""
+  myInput.value = ""
 
-  const li = document.createElement('li')
-  const span = document.createElement('span')
-  const editBtn = document.createElement('i')
-  const deleteBtn = document.createElement('i')
+  const input = document.createElement('input')
+  const label = document.createElement('label')
   const div = document.createElement('div')
 
-  span.textContent = task
-  editBtn.classList.add('fa-solid', 'fa-pen')
-  deleteBtn.classList.add('fa-solid', 'fa-trash')
-  div.classList.add('d-flex', 'gap-2')
+  const taskId = `task-${Date.now()}`
 
-  div.appendChild(editBtn)
-  div.appendChild(deleteBtn)
-  li.appendChild(span)
-  li.appendChild(div)
-  ul.appendChild(li)
+  div.className = "items"
+  label.htmlFor = taskId
+  input.id = taskId
+  input.type = "checkbox"
+  label.textContent = taskInput
 
-  taskValue.value = ""
+  div.appendChild(input)
+  div.appendChild(label)
+  taskContainer.appendChild(div)
 
-  deleteBtn.addEventListener('click', () => li.remove())
-
-  editBtn.addEventListener('click', () => {
-    const input = document.createElement('input')
-    input.type = 'text'
-    input.value = span.textContent
-    span.replaceWith(input)
-    input.focus()
-
-    input.addEventListener('blur', () => {
-      span.textContent = input.value.trim() || span.textContent
-      input.replaceWith(span)
-    })
+  input.addEventListener('change', () =>{
+    if(input.checked){
+      label.style.textDecoration = "line-through"
+    }
+    else{
+      label.style.textDecoration = "none"
+    }
   })
+  
 })
 
 //toggle
@@ -58,7 +45,7 @@ const lightTheme = document.querySelector('.fa-sun')
 darkTheme.addEventListener('click', () => {
   lightTheme.style.visibility = "visible"
   darkTheme.style.visibility = "hidden"
-  document.body.style.backgroundColor = "#1f1f1f"
+  document.body.style.backgroundColor = "#0a101f"
 })
 
 lightTheme.addEventListener('click', () => {

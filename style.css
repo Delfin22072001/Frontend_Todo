@@ -1,74 +1,51 @@
 :root {
-  --background: #121826;
-  --card: #1E293B;
-  --card-hover: #263449;
-  --text: #F8FAFC;
-  --input-bg: #0F172A;
-  --border: #334155;
-  --success: #0c943e;
-  --success-hover:#2ad368;
-  --warning:#e5c008;
-  --danger: #EF4444;
+  --background: #0f172a;
+  --surface: #1e293b;
+  --surface-light: #334155;
+  --text: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --border: #475569;
+  --success: #22c55e;
 }
 
-body{
-  background-color:var(--background);
-}
-
-.todo-list{
-  height:100vh;
+body {
+  font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .todo-form{
-  border:1px solid var(--border);
-  font-family: 'poppins';
-  height:auto;
-  width:380px;
-  padding:30px;
-  color:var(--text);
-  background-color:var(--card);
-  border-radius:20px;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: var(--surface);
 }
 
 .todo-form:hover{
-  box-shadow: 0px 0px 10px var(--card-hover);
-}
-
-#task, #myNewInput{
-  width:100%;
-  border-radius:5px;
-  border:var(--border); 
-  color:var(--text);
-  background-color: var(--input-bg);
-}
-
-#task{
-  padding:5px 10px;
-}
-
-#error-msg{
-  color:var(--danger);
-  font-size:15px;
-  margin:0px 5px;
-}
-
-#myNewInput{
-  padding:0px 5px;
-  width:250px;
-  height:30px;
+  cursor: pointer;
 }
 
 #task-button{
   background-color: var(--success);
   border:none;
-  padding:8px 15px;
-  border-radius:10px;  
-  color:var(--text)
+  padding: 8px 15px;
+  color:var(--text);
+  border-radius: 5px;
+  font-size: large;
 }
 
 #task-button:hover{
-  background-color: var(--success-hover);
-  box-shadow: 0px 0px 5px var(--primary);
+  box-shadow: 0px 0px 10px var(--success);
+}
+
+#task{
+  padding: 5px 10px;
+  border-radius: 5px;
+  width:300px;
+  border:none;
 }
 
 .icons{
@@ -77,47 +54,27 @@ body{
 
 .icons i{
   position: absolute;
-  right:5px;
-  bottom:-5px;
+  right:10px;
 }
 
-.icons .fa-sun{
+.fa-sun{
   visibility: hidden;
 }
 
-i:hover{
-  cursor: pointer;
-}
-
-.fa-pen{
-  color:var(--warning);
-}
-
-.fa-trash{
-  color:var(--danger);
-}
-
 .task-items{
-  margin:20px 0px;
-  border-radius:5px;
+  margin:20px 0;
 }
 
-.task-items ul{
-  margin:0;
-  padding:0;
-  list-style-type: disc;
-  list-style-position: inside;
-}
-
-li{
+.task-items .items{
+  padding:10px;
+  margin:10px 0px;
   display: flex;
-  font-size:18px;
-  margin:15px 0px;
-  padding:5px;
-  border-radius:5px;
-  align-items: center;
-  justify-content:space-between;
-  background-color: var(--input-bg);
+  gap:10px;
+  color:var(--text-secondary);
+  border-radius: 5px;
+  background-color: var(--surface-light);
 }
 
-
+.items label{
+  font-size: large;
+}
