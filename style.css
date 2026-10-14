@@ -18,8 +18,13 @@ body {
   align-items: center;
 }
 
+.navbar-brand{
+  color:var(--success);
+}
+
 .todo-form{
   padding: 30px;
+  width: auto;
   border-radius: 10px;
   background-color: var(--surface);
 }
@@ -72,9 +77,23 @@ body {
   gap:10px;
   color:var(--text-secondary);
   border-radius: 5px;
-  background-color: var(--surface-light);
+  background-color: var(--background);
 }
 
 .items label{
   font-size: large;
 }
+
+.displayMessage{
+  color:var(--border);
+  background-color: var(--background);
+}
+
+.completed label{
+  text-decoration: line-through;
+}
+
+.pending-tasks{
+  text-decoration: none;
+}
+

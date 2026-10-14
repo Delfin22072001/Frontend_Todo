@@ -1,49 +1,53 @@
 const addBtn = document.getElementById('task-button')
 const myInput = document.getElementById('task')
 const taskContainer = document.querySelector('.task-items')
+const myArray = JSON.parse(localStorage.getItem('tasks')) || []
 
-addBtn.addEventListener('click', (e)=>{
+addBtn.addEventListener('click', (e) => {
   e.preventDefault()
-  const taskInput = document.getElementById('task').value 
-  if(!taskInput){
+
+  const taskInput = document.getElementById('task').value.trim()
+  if (!taskInput) {
     alert("Please enter a task")
     return
   }
   myInput.value = ""
 
-  const input = document.createElement('input')
-  const label = document.createElement('label')
-  const div = document.createElement('div')
+  const repeat = myArray.some((val) => val.task === taskInput)
 
-  const taskId = `task-${Date.now()}`
-
-  div.className = "items"
-  label.htmlFor = taskId
-  input.id = taskId
-  input.type = "checkbox"
-  label.textContent = taskInput
-
-  div.appendChild(input)
-  div.appendChild(label)
-  taskContainer.appendChild(div)
-
-  input.addEventListener('change', () =>{
-    input.checked? label.style.textDecoration = "line-through" : label.style.textDecoration = "none"
-  }) 
+  if (repeat) {
+    alert("Task already present")
+    
+  }
+  else {
+    myArray.push({ task: taskInput, status: "pending" })
+    localStorage.setItem('tasks', JSON.stringify(myArray))
+    addTasks()
+  }
 })
 
-//toggle
-const darkTheme = document.querySelector('.fa-moon')
-const lightTheme = document.querySelector('.fa-sun')
+function addTasks() {
+  taskContainer.innerHTML = myArray.length > 0 ?
+    myArray.map((item, index) => `
+      <div class="items ${item.status}">
+        <input type="checkbox" class="checkboxInput" id="task-${index}" name="" ${item.status === "completed" ? "checked" : ""}/>
+        <label class="label" for="task-${index}">${item.task}</label>
+      </div>
+    `).join('') : (`<p class="displayMessage text-center p-2">No task found</p>`)
 
-darkTheme.addEventListener('click', () => {
-  lightTheme.style.visibility = "visible"
-  darkTheme.style.visibility = "hidden"
-  document.body.style.backgroundColor = "#0a101f"
-})
+  document.querySelectorAll('.checkboxInput').forEach((checkbox, index) => {
+    checkbox.addEventListener('input', () => {
+      if (checkbox.checked) {
+        myArray[index].status = "completed"
+        localStorage.setItem('tasks', JSON.stringify(myArray))
+      }
+      else {
+        myArray[index].status = "pending"
+        localStorage.setItem('tasks', JSON.stringify(myArray))
+      }
+      addTasks()
+    })
+  })
+}
 
-lightTheme.addEventListener('click', () => {
-  darkTheme.style.visibility = "visible"
-  lightTheme.style.visibility = "hidden"
-  document.body.style.backgroundColor = "#121826"
-})
+addTasks()
