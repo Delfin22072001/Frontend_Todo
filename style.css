@@ -1,5 +1,7 @@
 :root {
   --background: #0f172a;
+  --dark: #050505;
+  --light: #0f172a;
   --surface: #1e293b;
   --surface-light: #334155;
   --text: #f8fafc;
@@ -10,7 +12,7 @@
 
 body {
   font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--background);
+  background-color: var(--light);
   color: var(--text);
   height: 100vh;
   display: flex;
@@ -62,8 +64,20 @@ body {
   right:10px;
 }
 
-.fa-sun{
-  visibility: hidden;
+.dark-mode{
+  background-color: var(--dark);
+}
+
+.icons i:last-child{
+  display: none;
+}
+
+.dark-mode .icons i:first-child{
+  display: none;
+}
+
+.dark-mode .icons i:last-child{
+  display: block;
 }
 
 .task-items{

@@ -1,6 +1,7 @@
 const addBtn = document.getElementById('task-button')
 const myInput = document.getElementById('task')
 const taskContainer = document.querySelector('.task-items')
+// localStorage.clear()
 const myArray = JSON.parse(localStorage.getItem('tasks')) || []
 
 addBtn.addEventListener('click', (e) => {
@@ -51,3 +52,26 @@ function addTasks() {
 }
 
 addTasks()
+
+
+//toggle
+const themeToggler = document.querySelector('.icons')
+let darkMode = localStorage.getItem('darkMode')
+
+const enableDarkMode = () =>{
+  document.body.classList.add('dark-mode')
+  localStorage.setItem('darkMode', 'active')
+}
+
+const disableDarkMode = () =>{
+  document.body.classList.remove('dark-mode')
+  localStorage.setItem('darkMode', null)
+}
+
+if(darkMode === 'active') enableDarkMode()
+
+themeToggler.addEventListener('click', () =>{
+  darkMode = localStorage.getItem('darkMode')
+  darkMode !== 'active'? enableDarkMode() : disableDarkMode()
+})
+
