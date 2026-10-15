@@ -1,7 +1,6 @@
 const addBtn = document.getElementById('task-button')
 const myInput = document.getElementById('task')
 const taskContainer = document.querySelector('.task-items')
-// localStorage.clear()
 const myArray = JSON.parse(localStorage.getItem('tasks')) || []
 
 addBtn.addEventListener('click', (e) => {
@@ -52,7 +51,6 @@ function addTasks() {
 }
 
 addTasks()
-
 
 //toggle
 const themeToggler = document.querySelector('.icons')
